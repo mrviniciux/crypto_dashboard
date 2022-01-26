@@ -11,19 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     tableName: 'notification'
   });
-  Notification.associate = function(models) {
-    Notification.belongsTo(models.NotificationType, {
-      foreignKey: 'id_notification_type',
-      as: 'notification_type'
-    });
-    Notification.belongsTo(models.Payment, {
-      foreignKey: 'id_payment',
-      as: 'payment'
-    });
-    Notification.belongsTo(models.expenses, {
-      foreignKey: 'id_expense',
-      as: 'expense'
-    });
-  };
+  Notification.associate = function(models) {};
   return Notification;
 };

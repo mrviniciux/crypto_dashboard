@@ -17,6 +17,10 @@
     "refactor:dev": "yarn sequelize:database1:drop && yarn sequelize:database1:create && yarn sequelize:database1:migrate && yarn sequelize:database1:seed:all && yarn dev"
   },
   "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -37,10 +41,6 @@
     "sucrase": "^3.17.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/node": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
     "dotenv": "^8.2.0",
     "dotenv-safe": "^8.2.0",
     "helmet": "^4.4.1",

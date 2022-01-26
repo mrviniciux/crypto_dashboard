@@ -5,7 +5,7 @@ import { httpRejection, httpSuccess, isRequestValid } from './base';
 export const findAll = async (req, res, model, returnName) => {
   const name = req.query.name;
   const condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
-  const fetchNotificationList = () => await model.findAll({include: [{
+  const fetchNotificationList = async () => await model.findAll({include: [{
                                                       model: NotificationType, 
                                                       as: 'notification_type',
                                                   }, {
