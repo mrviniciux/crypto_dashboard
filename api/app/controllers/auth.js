@@ -1,4 +1,4 @@
-import { ExpiredToken } from '../models';
+import { ExpiredToken, User } from '../models';
 import { httpRejection } from './base';
 const jwt = require('jsonwebtoken');
 
@@ -30,17 +30,23 @@ export const verifyJWT = async (req, res, next) => {
 }
 
 export const signIn = async (req, res) => {
-  const arrUserSelect = await db[dbName].query('SELECT * FROM users where username = ? and password = ?', 
-               { replacements: [req.body.username, req.body.pwd],
-                type: db[dbName].QueryTypes.SELECT } );
-   
-  if(arrUserSelect.length > 0) {
-    const id = arrUserSelect[0].id;
-    const token = jwt.sign({ id }, process.env.SECRET, {});
-    res.status(200).json({ data: {auth: true, token: token, username: arrUserSelect[0].username, is_read_only: arrUserSelect[0].is_read_only} });
-  } else {
-    return httpRejection(res, 'Login inválido', 401);
+  const { name, password, email } = req;
+  const user = await User.find({name: name, password: password, email: email});
+
+  if (!user) {
+    return httpRejection(res, 'Login inválido', 401);;
   }
+
+  //TODO implementar retorno completo da autenticação
+  res.status(200).json({ data: {auth: true } }); 
+   
+  // if(arrUserSelect.length > 0) {
+  //   const id = arrUserSelect[0].id;
+  //   const token = jwt.sign({ id }, process.env.SECRET, {});
+  //   res.status(200).json({ data: {auth: true, token: token, username: arrUserSelect[0].username, is_read_only: arrUserSelect[0].is_read_only} });
+  // } else {
+  //   return httpRejection(res, 'Login inválido', 401);
+  // }
 };
 
 export const signOut = async (req, res) => {

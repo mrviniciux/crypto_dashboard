@@ -16,6 +16,4 @@ router.use('/api/attachments',            verifyJWT,    attachmentsRoute);
 router.use('/api/notification_types',     verifyJWT,    notificationTypesRoute);
 router.get('/', (req, res, next) => res.send('Welcome to crypto dashboard'));
 
-
 export default router;
-
