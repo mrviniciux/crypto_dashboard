@@ -1,0 +1,5 @@
+# /node_modules/* in the project root are ignored by default
+
+# ignore webstorm files
+/.idea/
+

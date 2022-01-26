@@ -1,0 +1,134 @@
+{
+  "extends": [
+    "airbnb-base/legacy",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:no-unsanitized/DOM"
+  ],
+  "plugins": [
+    "prettier",
+    "scanjs-rules",
+    "no-unsanitized"
+//    "xss"
+  ],
+  "globals": {
+    "mixpanel": "readonly"
+  },
+  "env": {
+    "browser": true,
+    "jquery": false,
+    "es6": true
+  },
+  "rules": {
+    // @TODO https://github.com/airbnb/javascript/issues/2169
+    "prefer-object-spread": "off",
+
+    // Naming functions would be a massive undertaking with little value. If we were starting from scratch,
+    // then we would probably buy into this. Also, in the ES6 world, anonymous / arrow functions reign supreme,
+    // and this rule is not expected in that context. Therefore it is best to disable the rule entirely.
+    "func-names": "off",
+
+    // With `--fix`, the prettier rules should never error. However adding this to still report errors
+    // in the case where eslint is run directly for the purpose of reporting or info gathering
+    "prettier/prettier": "error",
+
+    "scanjs-rules/accidental_assignment": 1,
+    "scanjs-rules/assign_to_hostname": 1,
+    "scanjs-rules/assign_to_onmessage": 1,
+    "scanjs-rules/assign_to_pathname": 1,
+    "scanjs-rules/assign_to_protocol": 1,
+    "scanjs-rules/assign_to_search": 1,
+    "scanjs-rules/assign_to_src": 0,
+    "scanjs-rules/call_Function": 1,
+    "scanjs-rules/call_connect": 1,
+    "scanjs-rules/call_eval": 1,
+    "scanjs-rules/call_execScript": 1,
+    "scanjs-rules/call_open_remote=true": 1,
+    "scanjs-rules/call_parseFromString": 1,
+    "scanjs-rules/call_setImmediate": 1,
+    "scanjs-rules/identifier_indexedDB": 1,
+    "scanjs-rules/new_Function": 1,
+    "scanjs-rules/property_addIdleObserver": 1,
+    "scanjs-rules/property_createContextualFragment": 1,
+    "scanjs-rules/property_crypto": 1,
+    "scanjs-rules/property_geolocation": 1,
+    "scanjs-rules/property_getUserMedia": 1,
+    "scanjs-rules/property_indexedDB": 1,
+    "scanjs-rules/property_mgmt": 1,
+    "no-unsanitized/method": "error",
+    "no-unsanitized/property": "error"
+    // See https://github.com/Rantanen/eslint-plugin-xss/blob/master/docs/rules/no-mixed-html.md
+//    "xss/no-mixed-html": [
+//      "warn",
+//      {
+//        "htmlVariableRules": [
+//          "(h|\\SH)tml$/"
+//          // camelCase variable names that end in html contain HTML
+//        ],
+//        // You might need to modify the function configuration below to account for functions that accept or return HTML
+//        // htmlInput lists all the functions (mostly from jQuery) that accept HTML input
+//        // htmlOutput lists all the functions that return HTML
+//        "functions": {
+//          "$": {
+//            "htmlInput": true,
+//            "htmlOutput": true,
+//            "safe": [
+//              "window",
+//              "document",
+//              "this"
+//            ]
+//          },
+//          ".after": {
+//            "htmlInput": true
+//          },
+//          ".append": {
+//            "htmlInput": true
+//          },
+//          ".attr": {
+//            "htmlOutput": true
+//          },
+//          ".before": {
+//            "htmlInput": true
+//          },
+//          ".clone": {
+//            "htmlOutput": true
+//          },
+//          ".detach": {
+//            "htmlOutput": true
+//          },
+//          ".html": {
+//            "htmlInput": true,
+//            "htmlOutput": true
+//          },
+//          ".innerHeight": {
+//            "htmlOutput": true
+//          },
+//          ".on": {
+//            "htmlOutput": true
+//          },
+//          ".parent": {
+//            "htmlOutput": true
+//          },
+//          ".prepend": {
+//            "htmlInput": true
+//          },
+//          ".replace": {
+//            "htmlInput": true,
+//            "htmlOutput": true
+//          },
+//          ".show": {
+//            "htmlOutput": true
+//          },
+//          ".text": {
+//            "safe": true
+//          },
+//          ".wrap": {
+//            "htmlInput": true
+//          }
+//        }
+//      }
+//    ],
+//    "xss/no-location-href-assign": "error"
+  },
+  "overrides": []
+}
