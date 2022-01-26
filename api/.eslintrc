@@ -130,5 +130,10 @@
 //    ],
 //    "xss/no-location-href-assign": "error"
   },
-  "overrides": []
+  "overrides": [
+    {
+      "files": [ "*.js" ],
+      "parserOptions": { "sourceType": "module" }
+    }
+  ]
 }
